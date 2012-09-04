@@ -1,0 +1,141 @@
+include shower
+
+//- Settings
+shower_show_progress = true
+
+title = "Shower Presentation Template"
+author = "Vadim Makeev"
+company = "Opera Software"
+
++shower
+  //- To apply styles to the certain slides
+  //- set slide ID to get needed elements
+  style.
+    #Cover h2 {
+      margin:65px 0 0;
+      color:#FFF;
+      text-align:center;
+      font-size:70px;
+      }
+    #Picture h2 {
+      color:#FFF;
+      }
+
+
+  +caption
+    h1= title
+    p
+      +link("http://pepelsbey.net/") #{author}
+      , 
+      +link("http://opera.com/") #{company}
+
+
+  +slide.cover#Cover
+    h2= title
+
+    +image("shower/pictures/cover.jpg")
+
+
+  +slide(data-timing="00:05")
+    //- You can use plain jade here
+    h2 Slide with timer
+
+    p It will change right in five seconds
+
+
+  +slide
+    //- Or you can use markdown
+    //- Ok, you can't use there inline html in markdown, so no <b> and <i> :(
+    :markdown
+      ## Heading
+      
+      In your slides text you can use [links](http://google.com/)
+      and various inline elements for *emotional* and **strong** emphasis or just for _italic_ or __bold__ decoration.
+      `<code>` is used for inline code samples.
+
+
+  +slide
+    h2 Two rows.<br> Mighty heading
+
+    p You can use two lines header but it would reduce space on a slide. The “Ribbon” theme is designed for seven lines of code after one-line header by default.
+    p.note This paragraph could be used as a footnote
+
+
+  +slide
+    :markdown
+      ## Various lists
+      
+      - Simple lists are marked with bullets.
+      - Ordered lists begin with a number.
+      - You can even nest lists one inside another.
+          1. Or mix their types.
+          2. But do not go too far.
+          3. Otherwise audience will be bored.
+      - Look, seven rows exactly!
+
+
+  +slide
+    h2 Serious citation
+
+    blockquote
+      p You can wrap one or more paragraphs into citation, which will make text italic and add a nice quote on the left. Giving the citation source would make it even more serious.
+      p: b Vadim Makeev
+
+
+  +slide
+    h2 When you have a lot of code
+
+    //- This surely need to be some markdown + some js line-wrapping
+    pre
+      code &lt;html lang="en"&gt;
+      code <mark>&lt;head&gt;</mark> <mark class="comment">&lt;!--Comment--&gt;</mark>
+      code     &lt;title&gt;Shower&lt;/title&gt;
+      code     &lt;meta charset="<mark class="important">UTF-8</mark>"&gt;
+      code     &lt;link rel="stylesheet" href="s/screen.css"&gt;
+      code     &lt;script src="j/jquery.js"&gt;&lt;/script&gt;
+      code <mark>&lt;/head&gt;</mark>
+
+
+  +slide
+    h2 Code in separate blocks
+    pre
+      code <mark>&lt;html</mark> lang="en"&gt;
+    p.note Now you can add a note for each block
+
+    pre
+      code <mark>&lt;meta</mark> charset="<mark>UTF-8</mark>"&gt;
+    p.note And explain what is interesting about it
+
+
+  +slide.shout
+    h2 You can shout<br> this way
+
+
+  +slide.cover#Picture
+    h2 And place any picture
+
+    +image("shower/pictures/picture.jpg")
+
+
+  +slide
+    h2 Inner navigation
+
+    ol
+      <li>Lets you change objects one by one</li>
+      <li class="next">For example, show list items</li>
+      <li class="next">Or switch pictures</li>
+      <li class="next">And much more</li>
+
+    p But it will work only once
+
+  +slide
+    :markdown
+      ## #{title}
+      
+       #{author}, #{company}
+       
+      - [pepelsbey.net](http://pepelsbey.net)
+      - [twitter.com/pepelsbey](http://twitter.com/pepelsbey)
+      - [pepelsbey@gmail.com](mailto:pepelsbey@gmail.com)
+      
+      Shower: [github.com/pepelsbey/shower](http://github.com/pepelsbey/shower)

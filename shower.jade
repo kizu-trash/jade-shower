@@ -1,0 +1,49 @@
+shower_show_progress = false
+shower_lang = "en"
+
+mixin shower()
+  !!! 5
+  html(lang=shower_lang)
+    head
+      title= title
+      meta(charset="utf-8")
+      meta(
+        name="viewport"
+        content="width=1274, user-scalable=no")
+      link(
+        rel="stylesheet"
+        href="shower/themes/ribbon/styles/screen.css")
+      link(
+        rel="stylesheet"
+        media="print"
+        href="shower/themes/ribbon/styles/print.css")
+
+    body.list
+      block
+
+      if shower_show_progress
+        .progress: div
+      script(src="shower/scripts/script.js")
+
+      if shower_lang == "ru"
+        // Копирайт © 2010–2012 Вадим Макеев — pepelsbey.net
+        // Фотографии Джона Кери — fiftyfootshadows.net
+      else
+        // Copyright © 2010–2012 Vadim Makeev — pepelsbey.net
+        // Photos by John Carey — fiftyfootshadows.net
+
+
+mixin caption()
+  header.caption(attributes)
+    block
+
+mixin slide()
+  section.slide(attributes)
+    block
+
+mixin link(href)
+  a(attributes, href=href)
+    block
+
+mixin image(src)
+  img(alt="",attributes, src=src)

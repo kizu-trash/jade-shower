@@ -1,0 +1,142 @@
+include shower
+
+//- Settings
+shower_show_progress = true
+shower_lang = "ru"
+
+title = "Шаблон презентации Shower"
+author = "Вадим Макеев"
+company = "Opera Software"
+
++shower
+  //- Для оформления отдельный слайдов, задайте
+  //- ID слайда для доступа к необходимым элементам
+  style.
+    #Cover h2 {
+      margin:65px 0 0;
+      color:#FFF;
+      text-align:center;
+      font-size:70px;
+      }
+    #Picture h2 {
+      color:#FFF;
+      }
+
+
+  +caption
+    h1= title
+    p
+      +link("http://pepelsbey.net/") #{author}
+      , 
+      +link("http://opera.com/") #{company}
+
+
+  +slide.cover#Cover
+    h2= title
+
+    +image("shower/pictures/cover.jpg")
+
+
+  +slide(data-timing="00:05")
+    //- Можно использовать тупо Jade
+    h2 Слайд с таймером
+
+    p Он сменится ровно через пять секунд
+
+
+  +slide
+    //- Ну, или можно использовать маркдаун
+    //- Вот только в этой версии нельзя использовать инлайновый html, так что пока без <b> и <i> :(
+    :markdown
+      ## Заголовок
+      
+      В тексте слайда можно использовать [ссылки](http://google.com/)
+      и различные строчные элементы для *эмоционального* выделения и подчёркивания **важности** или просто для _курсивного_ и __полужирного__ начертания.
+      Для строчных примеров кода используется `<code>`.
+
+
+  +slide
+    h2 Две строки.<br> Мощный заголовок
+
+    p Заголовок можно пустить в две строки, но это уменьшит количество места на слайде. Тема «Ribbon» по умолчанию рассчитана на семь строк текста после однострочного заголовка.
+    p.note Такой абзац может использоваться как примечание
+
+
+  +slide
+    :markdown
+      ## Разные списки
+      
+      - Обычные списки обозначаются маркерами.
+      - Упорядоченные списки начинаются с цифры.
+      - Вы даже можете вкладывать списки друг в друга.
+          1. Или смешивать их типы.
+          2. Но не увлекайтесь слишком.
+          3. Иначе зрителям станет скучно.
+      - Смотрите, ровно семь строк!
+
+
+  +slide
+    h2 Серьёзная цитата
+
+    blockquote
+      p В цитату можно обернуть один или несколько абзацев текста, который приобретёт курсивное начертание и красивую кавычку слева. Серьёзности добавит указание источника.
+      p: b Вадим Макеев
+
+
+  +slide
+    h2 Когда у вас много кода
+
+    //- Это, определённо, в будущем должен быть маркдаун с разделением кода на строчки в JS
+    pre
+      code &lt;html lang="ru"&gt;
+      code <mark>&lt;head&gt;</mark> <mark class="comment">&lt;!--Комментарий--&gt;</mark>
+      code     &lt;title&gt;Shower&lt;/title&gt;
+      code     &lt;meta charset="<mark class="important">UTF-8</mark>"&gt;
+      code     &lt;link rel="stylesheet" href="s/screen.css"&gt;
+      code     &lt;script src="j/jquery.js"&gt;&lt;/script&gt;
+      code <mark>&lt;/head&gt;</mark>
+
+
+  +slide
+    h2 Код в отдельных блоках
+    pre
+      code <mark>&lt;html</mark> lang="ru"&gt;
+    p.note Каждый блок теперь можно подписать
+
+    pre
+      code <mark>&lt;meta</mark> charset="<mark>UTF-8</mark>"&gt;
+    p.note И объяснить, что же в нём такого интересного
+
+
+  +slide.shout
+    h2 Так можно<br> крикнуть
+
+
+  +slide.cover#Picture
+    h2 А так вставить картинку
+
+    +image("shower/pictures/picture.jpg")
+
+
+  +slide
+    h2 Внутренняя навигация
+
+    ol
+      <li>Позволяет изменять объекты по очереди</li>
+      <li class="next">Например, показывать пункты списка</li>
+      <li class="next">Или переключать картинки</li>
+      <li class="next">И многое другое</li>
+
+    p Но такая навигация срабатывает всего один раз
+
+  +slide
+    :markdown
+      ## #{title}
+      
+       #{author}, #{company}
+       
+      - [pepelsbey.net](http://pepelsbey.net)
+      - [twitter.com/pepelsbey](http://twitter.com/pepelsbey)
+      - [pepelsbey@gmail.com](mailto:pepelsbey@gmail.com)
+      
+      Shower: [github.com/pepelsbey/shower](http://github.com/pepelsbey/shower)
