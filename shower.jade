@@ -23,7 +23,7 @@ mixin shower()
 
       if shower_show_progress
         .progress: div
-      script(src="shower/scripts/script.js")
+      script(src="shower/shower.js")
 
       if shower_lang == "ru"
         // Копирайт © 2010–2012 Вадим Макеев — pepelsbey.net
@@ -39,7 +39,8 @@ mixin caption()
 
 mixin slide()
   section.slide(attributes)
-    block
+    div
+      block
 
 mixin link(href)
   a(attributes, href=href)
